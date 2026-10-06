@@ -1,7 +1,8 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
+from .views import ServicioViewSet
 
-from . import views
+router = DefaultRouter()
+router.register("servicios", ServicioViewSet, basename="servicio")
 
-urlpatterns = [
-    path("servicios/", views.servicio_list, name="servicio-list"),
-]
+# El router genera /servicios/ y /servicios/<id>/ con sus métodos HTTP
+urlpatterns = router.urls
